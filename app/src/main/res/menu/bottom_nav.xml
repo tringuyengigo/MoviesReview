@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/popularFragment"
+        android:title="@string/popular"/>
+    <item
+        android:id="@+id/topRatedFragment"
+        android:title="@string/top_rated"/>
+    <item
+        android:id="@+id/nowPlayFragment"
+        android:title="@string/now_play"/>
+</menu>

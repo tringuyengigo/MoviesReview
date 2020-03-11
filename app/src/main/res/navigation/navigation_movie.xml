@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_movie"
+    app:startDestination="@id/popularFragment">
+
+    <fragment
+        android:id="@+id/popularFragment"
+        android:name="gdsvn.tringuyen.moviesreview.presentation.ui.fragment.popular.PopularFragment"
+        android:label="popular_fragment"
+        tools:layout="@layout/popular_fragment" />
+    <fragment
+        android:id="@+id/topRatedFragment"
+        android:name="gdsvn.tringuyen.moviesreview.presentation.ui.fragment.top.TopRatedFragment"
+        android:label="top_rated_fragment"
+        tools:layout="@layout/top_rated_fragment" />
+    <fragment
+        android:id="@+id/nowPlayFragment"
+        android:name="gdsvn.tringuyen.moviesreview.presentation.ui.fragment.now.NowPlayFragment"
+        android:label="now_play_fragment"
+        tools:layout="@layout/now_play_fragment" />
+</navigation>

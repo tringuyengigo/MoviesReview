@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Movies Review</string>
+    <string name="popular">Popular</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="now_play">Now Playing</string>
+</resources>
