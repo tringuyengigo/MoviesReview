@@ -1,4 +1,4 @@
-package gdsvn.tringuyen.moviesreview.data.network.api
+package gdsvn.tringuyen.moviesreview.data.remote.api
 
 import gdsvn.tringuyen.moviesreview.data.local.model.Movies
 import io.reactivex.Flowable

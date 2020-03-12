@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import gdsvn.tringuyen.moviesreview.R
-import gdsvn.tringuyen.moviesreview.presentation.ui.vm.top.TopRatedViewModel
+import gdsvn.tringuyen.moviesreview.presentation.vm.top.TopRatedViewModel
 
 class TopRatedFragment : Fragment() {
 

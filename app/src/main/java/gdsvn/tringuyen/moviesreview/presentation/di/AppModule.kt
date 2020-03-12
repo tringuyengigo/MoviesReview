@@ -1,13 +1,10 @@
 package gdsvn.tringuyen.moviesreview.presentation.di
 
-import gdsvn.tringuyen.moviesreview.data.network.api.MoviesService
-import gdsvn.tringuyen.moviesreview.data.responsitory.MoviesRemoteRepository
+import gdsvn.tringuyen.moviesreview.data.remote.api.MoviesService
 import gdsvn.tringuyen.moviesreview.data.responsitory.MoviesRemoteRepositoryImpl
-import gdsvn.tringuyen.moviesreview.data.responsitory.MoviesRepositoryImpl
-import gdsvn.tringuyen.moviesreview.domain.respository.MoviesRepository
 import gdsvn.tringuyen.moviesreview.domain.usecase.GetMoviesPopularUseCase
 import gdsvn.tringuyen.moviesreview.presentation.common.AsyncFlowableTransformer
-import gdsvn.tringuyen.moviesreview.presentation.ui.vm.popular.MoviesPopularViewModel
+import gdsvn.tringuyen.moviesreview.presentation.vm.popular.MoviesPopularViewModel
 import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 import retrofit2.Retrofit

@@ -1,17 +1,17 @@
 package gdsvn.tringuyen.moviesreview.presentation.ui.fragment.popular
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.google.gson.Gson
 import gdsvn.tringuyen.moviesreview.R
 import gdsvn.tringuyen.moviesreview.presentation.common.Status
-import gdsvn.tringuyen.moviesreview.presentation.ui.vm.popular.MoviesPopularViewModel
+import gdsvn.tringuyen.moviesreview.presentation.vm.popular.MoviesPopularViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -38,7 +38,13 @@ class PopularFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        moviesPopularViewModel.fetchMoviesPopular()
+
+        moviesPopularViewModel.movieList.observe(this, Observer {
+                data -> Timber.e("moviesPopularViewModel Loading data........... data :  ${data.size}")
+
+        })
+
+
         moviesPopularViewModel.getMoviesPopularLiveData().observe(this, Observer { data ->
             when (data?.responseType) {
                 Status.ERROR -> {
@@ -54,6 +60,7 @@ class PopularFragment : Fragment() {
             data?.data?.let { movies ->
                 Timber.v("Data Movies at PopularFragment movies size ${movies.results.size}")
                 Timber.v("Data Movies at PopularFragment ${Gson().toJson(movies)}")
+                moviesPopularViewModel.retry()
             }
         })
     }

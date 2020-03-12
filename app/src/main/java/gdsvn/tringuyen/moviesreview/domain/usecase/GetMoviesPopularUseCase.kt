@@ -2,10 +2,8 @@ package gdsvn.tringuyen.moviesreview.domain.usecase
 
 import gdsvn.tringuyen.moviesreview.data.local.model.Movies
 import gdsvn.tringuyen.moviesreview.data.responsitory.MoviesRemoteRepositoryImpl
-import gdsvn.tringuyen.moviesreview.data.responsitory.MoviesRepositoryImpl
 import gdsvn.tringuyen.moviesreview.domain.common.BaseFlowableUseCase
 import gdsvn.tringuyen.moviesreview.domain.common.FlowableRxTransformer
-import gdsvn.tringuyen.moviesreview.domain.respository.MoviesRepository
 import io.reactivex.Flowable
 
 

@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import gdsvn.tringuyen.moviesreview.R
-import gdsvn.tringuyen.moviesreview.presentation.ui.vm.now.NowPlayViewModel
+import gdsvn.tringuyen.moviesreview.presentation.vm.now.NowPlayViewModel
 
 class NowPlayFragment : Fragment() {
 

@@ -1,4 +1,4 @@
-package gdsvn.tringuyen.moviesreview.presentation.ui.vm.top
+package gdsvn.tringuyen.moviesreview.presentation.vm.top
 
 import androidx.lifecycle.ViewModel
 

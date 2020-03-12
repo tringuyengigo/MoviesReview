@@ -44,57 +44,78 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    //Add viewmodel
+
+    // Add viewmodel
     implementation "androidx.legacy:legacy-support-v4:1.0.0"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
-    //Add Navigation
+    // Add Navigation
     implementation "android.arch.navigation:navigation-fragment:$navigation_version"
     implementation "android.arch.navigation:navigation-ui:$navigation_version"
     implementation "android.arch.navigation:navigation-fragment-ktx:$navigation_version"
     implementation "android.arch.navigation:navigation-ui-ktx:$navigation_version"
-    //Add Room
+
+    // Add Room
     implementation "android.arch.persistence.room:runtime:$room_version"
     kapt "android.arch.persistence.room:compiler:$room_version"
     kapt "android.arch.persistence.room:testing:$room_version"
     implementation "android.arch.persistence.room:rxjava2:$room_version"
-    //Add Retrofit
+
+    // Add Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:adapter-rxjava:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
-    //Add Gson
+
+    // Add Gson
     implementation "com.google.code.gson:gson:$gson_version"
-    //Add Koin
+
+    // Add Koin
     implementation "org.koin:koin-android-viewmodel:$koin_version"
-    //Add Okhttp
+
+    // Add Okhttp
     implementation "com.squareup.okhttp3:logging-interceptor:4.2.2"
-    //Add Reactive
+
+    // Add Reactive
     implementation "io.reactivex.rxjava2:rxandroid:$rx_version"
-    //Add Better dateTime-time support even on older Android versions
+
+    // Add Better dateTime-time support even on older Android versions
     implementation "com.jakewharton.threetenabp:threetenabp:1.1.1"
-    //Add Glide
+
+    // Add Glide
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     kapt 'com.github.bumptech.glide:compiler:4.8.0'
-    //Add Groupie RecyclerView
+
+    // Add Groupie RecyclerView
     implementation 'com.xwray:groupie:2.1.0'
     implementation 'com.xwray:groupie-kotlin-android-extensions:2.1.0'
-    //Add Preference
+
+    // Add Preference
     implementation "androidx.preference:preference:1.1.0"
-    //Add WeatherLocation
+
+    // Add WeatherLocation
     implementation "com.google.android.gms:play-services-location:17.0.0"
-    //Add New Material Design
+
+    // Add New Material Design
     implementation "com.google.android.material:material:1.1.0"
-    //Add Timber
+
+    // Add Timber
     implementation 'com.jakewharton.timber:timber:4.7.1'
     implementation 'com.android.support:multidex:1.0.3'
-    //Add Kodein
+
+    // Add Kode in
     implementation "org.kodein.di:kodein-di-generic-jvm:$kodein_version"
     implementation "org.kodein.di:kodein-di-framework-android-x:$kodein_version"
-    //Add Kotlin Android Coroutines
+
+    // Add Kotlin Android Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2"
 
-    implementation 'uk.co.samuelwall:material-tap-target-prompt:3.0.0'
+    // Add Paging
+    implementation "androidx.paging:paging-runtime:$paging_version"
+    implementation "android.arch.paging:rxjava2:$paging_version"
+
+    // Add Material Tap Target Prompt
+    implementation "uk.co.samuelwall:material-tap-target-prompt:$material_tap_targetversion"
 }
