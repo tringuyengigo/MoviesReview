@@ -1,6 +1,6 @@
 package gdsvn.tringuyen.moviesreview.presentation.di
 
-import gdsvn.tringuyen.moviesreview.data.remote.api.MoviesService
+import gdsvn.tringuyen.moviesreview.data.remote.api.MoviesApi
 import gdsvn.tringuyen.moviesreview.data.responsitory.MoviesRemoteRepositoryImpl
 import gdsvn.tringuyen.moviesreview.domain.usecase.GetMoviesPopularUseCase
 import gdsvn.tringuyen.moviesreview.presentation.common.AsyncFlowableTransformer
@@ -20,7 +20,7 @@ val mUseCaseModules = module {
 
 val mNetworkModules = module {
     single(name = RETROFIT_INSTANCE) { createNetworkClient(BASE_URL) }
-    single(name = API) { (get(RETROFIT_INSTANCE) as Retrofit).create(MoviesService::class.java) }
+    single(name = API) { (get(RETROFIT_INSTANCE) as Retrofit).create(MoviesApi::class.java) }
 }
 
 val mViewModels = module {

@@ -1,8 +1,11 @@
 package gdsvn.tringuyen.moviesreview.data.remote.paging
 
 import android.annotation.SuppressLint
+import androidx.annotation.NonNull
 import androidx.lifecycle.MutableLiveData
+import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
+import com.google.gson.Gson
 import gdsvn.tringuyen.moviesreview.data.local.model.Movie
 import gdsvn.tringuyen.moviesreview.data.local.model.Movies
 import gdsvn.tringuyen.moviesreview.domain.usecase.GetMoviesPopularUseCase
@@ -21,21 +24,17 @@ class MoviesDataSource(
     private var retryCompletable: Completable? = null
 
 
-    @SuppressLint("CheckResult")
-    override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Movie>) {
+    override fun loadInitial( params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Movie>) {
         updateState(State.LOADING)
         compositeDisposable.add(
-
             mGetMoviesPopularUseCase.getPopularMovies(1)
                 .subscribe(
                     { response ->
-                        Timber.e("loadInitial ${response?.results}")
                         updateState(State.DONE)
-                        Timber.e("loadInitial state ${state.value}")
                         response?.results?.let {
-                            Timber.e("loadInitial in response ${it.forEach {
-                                Timber.e("loadInitial item ${it} ") 
-                            }}")
+                            it.forEach { movie ->
+                                Timber.e("loadInitial item ${Gson().toJson(movie)} ")
+                            }
                             callback.onResult(
                                 it,
                                 null,
@@ -52,7 +51,7 @@ class MoviesDataSource(
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) {
-        updateState(State.LOADING)
+        updateState(State.DONE)
         compositeDisposable.add(
             mGetMoviesPopularUseCase.getPopularMovies(params.key)
                         .subscribe(

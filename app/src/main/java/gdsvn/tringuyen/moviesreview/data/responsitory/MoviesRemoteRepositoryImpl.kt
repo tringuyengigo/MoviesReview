@@ -2,15 +2,14 @@ package gdsvn.tringuyen.moviesreview.data.responsitory
 
 
 import gdsvn.tringuyen.moviesreview.data.local.model.Movies
-import gdsvn.tringuyen.moviesreview.data.remote.api.MoviesService
+import gdsvn.tringuyen.moviesreview.data.remote.api.MoviesApi
 import gdsvn.tringuyen.moviesreview.domain.respository.MoviesRepository
-import gdsvn.tringuyen.moviesreview.presentation.common.MoviesFilterType
 import io.reactivex.Flowable
-import timber.log.Timber
+import io.reactivex.Single
 
-class MoviesRemoteRepositoryImpl constructor(private val apiService: MoviesService) : MoviesRepository {
+class MoviesRemoteRepositoryImpl constructor(private val apiService: MoviesApi) : MoviesRepository {
 
-    override fun getPopularMovies(page: Int): Flowable<Movies?> {
+    override fun getPopularMovies(page: Int): Single<Movies?> {
         return apiService.getPopularMovies(page = page)
     }
 

@@ -1,24 +1,26 @@
 package gdsvn.tringuyen.moviesreview.presentation.ui.fragment.popular
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LifecycleOwner
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import com.google.gson.Gson
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import gdsvn.tringuyen.moviesreview.R
-import gdsvn.tringuyen.moviesreview.presentation.common.Status
+import gdsvn.tringuyen.moviesreview.data.remote.paging.MoviesListAdapter
+import gdsvn.tringuyen.moviesreview.data.remote.paging.State
 import gdsvn.tringuyen.moviesreview.presentation.vm.popular.MoviesPopularViewModel
+import kotlinx.android.synthetic.main.popular_fragment.*
 import org.koin.android.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class PopularFragment : Fragment() {
 
     private val moviesPopularViewModel: MoviesPopularViewModel by viewModel()
-
+    private lateinit var mMoviesListAdapter: MoviesListAdapter
     companion object {
         fun newInstance() = PopularFragment()
     }
@@ -38,29 +40,28 @@ class PopularFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        initAdapter()
+        initState()
+    }
+
+    private fun initAdapter() {
+        mMoviesListAdapter = MoviesListAdapter { moviesPopularViewModel.retry() }
+        recycler_view.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        recycler_view.adapter = mMoviesListAdapter
 
         moviesPopularViewModel.movieList.observe(this, Observer {
-                data -> Timber.e("moviesPopularViewModel Loading data........... data :  ${data.size}")
-
+            mMoviesListAdapter.submitList(it)
         })
+    }
 
+    private fun initState() {
+        txt_error.setOnClickListener { moviesPopularViewModel.retry() }
+        moviesPopularViewModel.getState().observe(this, Observer { state ->
+            progress_bar.visibility = if (moviesPopularViewModel.listIsEmpty() && state == State.LOADING) View.VISIBLE else View.GONE
+            txt_error.visibility = if (moviesPopularViewModel.listIsEmpty() && state == State.ERROR) View.VISIBLE else View.GONE
+            if (!moviesPopularViewModel.listIsEmpty()) {
+                mMoviesListAdapter.setState(state ?: State.DONE)
 
-        moviesPopularViewModel.getMoviesPopularLiveData().observe(this, Observer { data ->
-            when (data?.responseType) {
-                Status.ERROR -> {
-                    Timber.v("Loading data........... ERROR ${data.error}")
-                }
-                Status.LOADING -> {
-                    Timber.v("Loading data........... LOADING")
-                }
-                Status.SUCCESSFUL -> {
-                    Timber.v("Loading data........... SUCCESSFUL")
-                }
-            }
-            data?.data?.let { movies ->
-                Timber.v("Data Movies at PopularFragment movies size ${movies.results.size}")
-                Timber.v("Data Movies at PopularFragment ${Gson().toJson(movies)}")
-                moviesPopularViewModel.retry()
             }
         })
     }

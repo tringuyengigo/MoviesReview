@@ -5,7 +5,7 @@ import androidx.paging.DataSource
 import gdsvn.tringuyen.moviesreview.data.local.model.Movie
 import gdsvn.tringuyen.moviesreview.domain.usecase.GetMoviesPopularUseCase
 import io.reactivex.disposables.CompositeDisposable
-import timber.log.Timber
+
 
 class MoviesDataSourceFactory(
         private val compositeDisposable: CompositeDisposable,

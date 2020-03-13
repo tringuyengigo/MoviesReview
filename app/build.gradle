@@ -118,4 +118,7 @@ dependencies {
 
     // Add Material Tap Target Prompt
     implementation "uk.co.samuelwall:material-tap-target-prompt:$material_tap_targetversion"
+
+    //Image
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }
