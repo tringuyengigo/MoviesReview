@@ -1,4 +1,4 @@
-package gdsvn.tringuyen.moviesreview.presentation.ui.fragment.now
+package gdsvn.tringuyen.moviesreview.presentation.ui.fragment.show
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -10,11 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 import gdsvn.tringuyen.moviesreview.R
 import gdsvn.tringuyen.moviesreview.presentation.vm.now.NowPlayViewModel
 
-class NowPlayFragment : Fragment() {
+class TVShowFragment : Fragment() {
 
     companion object {
         fun newInstance() =
-            NowPlayFragment()
+            TVShowFragment()
     }
 
     private lateinit var viewModel: NowPlayViewModel
@@ -23,14 +23,14 @@ class NowPlayFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.now_play_fragment, container, false)
+        return inflater.inflate(R.layout.tv_show_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(NowPlayViewModel::class.java)
         (activity as? AppCompatActivity)?.supportActionBar?.title = this!!.getString(R.string.app_name)
-        (activity as? AppCompatActivity)?.supportActionBar?.subtitle = this!!.getString(R.string.now_play)
+        (activity as? AppCompatActivity)?.supportActionBar?.subtitle = this!!.getString(R.string.tv_shows)
 
     }
 

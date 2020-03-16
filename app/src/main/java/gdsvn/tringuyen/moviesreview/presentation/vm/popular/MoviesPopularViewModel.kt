@@ -1,6 +1,5 @@
 package gdsvn.tringuyen.moviesreview.presentation.vm.popular
 
-import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -8,15 +7,12 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import gdsvn.tringuyen.moviesreview.data.local.model.Movie
 import gdsvn.tringuyen.moviesreview.data.local.model.Movies
-import gdsvn.tringuyen.moviesreview.data.remote.paging.MoviesDataSource
-import gdsvn.tringuyen.moviesreview.data.remote.paging.MoviesDataSourceFactory
-import gdsvn.tringuyen.moviesreview.data.remote.paging.State
+import gdsvn.tringuyen.moviesreview.data.remote.paging.common.MoviesDataSource
+import gdsvn.tringuyen.moviesreview.data.remote.paging.common.MoviesDataSourceFactory
+import gdsvn.tringuyen.moviesreview.data.remote.paging.common.State
 import gdsvn.tringuyen.moviesreview.domain.usecase.GetMoviesPopularUseCase
 import gdsvn.tringuyen.moviesreview.presentation.common.BaseViewModel
 import gdsvn.tringuyen.moviesreview.presentation.common.Data
-import gdsvn.tringuyen.moviesreview.presentation.common.Status
-import io.reactivex.disposables.CompositeDisposable
-import timber.log.Timber
 
 
 class MoviesPopularViewModel(private val getMoviesPopularUseCase: GetMoviesPopularUseCase) : BaseViewModel() {
@@ -27,7 +23,11 @@ class MoviesPopularViewModel(private val getMoviesPopularUseCase: GetMoviesPopul
     var movieList: LiveData<PagedList<Movie>>
 
     private val pageSize = 5
-    private val mMoviesDataSourceFactory: MoviesDataSourceFactory = MoviesDataSourceFactory(compositeDisposable, getMoviesPopularUseCase)
+    private val mMoviesDataSourceFactory: MoviesDataSourceFactory =
+        MoviesDataSourceFactory(
+            compositeDisposable,
+            getMoviesPopularUseCase
+        )
 
     init {
         val config = PagedList.Config.Builder()

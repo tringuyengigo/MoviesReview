@@ -1,26 +1,33 @@
-package gdsvn.tringuyen.moviesreview.data.remote.paging
+package gdsvn.tringuyen.moviesreview.data.remote.paging.now
 
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import gdsvn.tringuyen.moviesreview.data.local.model.Movie
+import gdsvn.tringuyen.moviesreview.data.remote.paging.common.ListFooterViewHolder
+import gdsvn.tringuyen.moviesreview.data.remote.paging.common.State
 
-class MoviesListAdapter(private val retry: () -> Unit)
-    : PagedListAdapter<Movie, RecyclerView.ViewHolder>(NewsDiffCallback) {
+class MoviesNowListAdapter(private val retry: () -> Unit) : PagedListAdapter<Movie, RecyclerView.ViewHolder>(
+    NewsDiffCallback
+) {
 
     private val DATA_VIEW_TYPE = 1
     private val FOOTER_VIEW_TYPE = 2
 
-    private var state = State.LOADING
+    private var state =
+        State.LOADING
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return if (viewType == DATA_VIEW_TYPE) MovisViewHolder.create(parent) else ListFooterViewHolder.create(retry, parent)
+        return if (viewType == DATA_VIEW_TYPE) MoviesNowParentAdapter.create(parent) else ListFooterViewHolder.create(
+            retry,
+            parent
+        )
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (getItemViewType(position) == DATA_VIEW_TYPE)
-            (holder as MovisViewHolder).bind(getItem(position))
+            (holder as MoviesNowParentAdapter).bind(getItem(position))
         else (holder as ListFooterViewHolder).bind(state)
     }
 

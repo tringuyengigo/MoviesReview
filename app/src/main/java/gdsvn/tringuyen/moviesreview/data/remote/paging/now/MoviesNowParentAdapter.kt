@@ -1,4 +1,4 @@
-package gdsvn.tringuyen.moviesreview.data.remote.paging
+package gdsvn.tringuyen.moviesreview.data.remote.paging.now
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,8 @@ import gdsvn.tringuyen.moviesreview.R
 import gdsvn.tringuyen.moviesreview.data.local.model.Movie
 import kotlinx.android.synthetic.main.item_movie.view.*
 
-class MovisViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class MoviesNowParentAdapter(view: View) : RecyclerView.ViewHolder(view) {
+
     private val imageLink = "https://image.tmdb.org/t/p/w500"
     fun bind(movie: Movie?) {
         if (movie != null) {
@@ -21,10 +22,11 @@ class MovisViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     }
 
     companion object {
-        fun create(parent: ViewGroup): MovisViewHolder {
-            val view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_movie, parent, false)
-            return MovisViewHolder(view)
+        fun create(parent: ViewGroup): MoviesNowParentAdapter {
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_movie, parent, false)
+            return MoviesNowParentAdapter(
+                view
+            )
         }
     }
 }

@@ -1,4 +1,4 @@
-package gdsvn.tringuyen.moviesreview.data.remote.paging
+package gdsvn.tringuyen.moviesreview.data.remote.paging.common
 
 import android.view.LayoutInflater
 import android.view.View
@@ -17,10 +17,11 @@ class ListFooterViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     companion object {
         fun create(retry: () -> Unit, parent: ViewGroup): ListFooterViewHolder {
-            val view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_list_movie, parent, false)
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_movie, parent, false)
             view.txt_error.setOnClickListener { retry() }
-            return ListFooterViewHolder(view)
+            return ListFooterViewHolder(
+                view
+            )
         }
     }
 }

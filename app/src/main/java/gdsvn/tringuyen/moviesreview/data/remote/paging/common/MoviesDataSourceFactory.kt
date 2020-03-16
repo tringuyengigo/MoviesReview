@@ -1,8 +1,9 @@
-package gdsvn.tringuyen.moviesreview.data.remote.paging
+package gdsvn.tringuyen.moviesreview.data.remote.paging.common
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import gdsvn.tringuyen.moviesreview.data.local.model.Movie
+import gdsvn.tringuyen.moviesreview.data.remote.paging.common.MoviesDataSource
 import gdsvn.tringuyen.moviesreview.domain.usecase.GetMoviesPopularUseCase
 import io.reactivex.disposables.CompositeDisposable
 
@@ -15,7 +16,11 @@ class MoviesDataSourceFactory(
     val moviesDataSourceLiveData = MutableLiveData<MoviesDataSource>()
 
     override fun create(): DataSource<Int, Movie> {
-        var moviesDataSource = MoviesDataSource(mGetMoviesPopularUseCase, compositeDisposable)
+        var moviesDataSource =
+            MoviesDataSource(
+                mGetMoviesPopularUseCase,
+                compositeDisposable
+            )
         moviesDataSourceLiveData.postValue(moviesDataSource)
         return moviesDataSource
     }
