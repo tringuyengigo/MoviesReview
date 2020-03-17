@@ -1,9 +1,12 @@
 package gdsvn.tringuyen.moviesreview.presentation.ui.fragment.movies
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -47,6 +50,9 @@ class MoviesFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        this.activity?.window?.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setupView(false)
         setupToolbar()
         initAdapter()
@@ -77,6 +83,7 @@ class MoviesFragment : Fragment() {
         this.appbar.addOnOffsetChangedListener(object : OnOffsetChangedListener {
             var isShow = true
             var scrollRange = -1
+            @SuppressLint("ResourceType")
             override fun onOffsetChanged(appBarLayout: AppBarLayout, verticalOffset: Int) {
                 if (scrollRange == -1) {
                     scrollRange = appBarLayout.totalScrollRange
@@ -84,9 +91,11 @@ class MoviesFragment : Fragment() {
                 // verify if the toolbar is completely collapsed and set the movie name as the title
                 if (scrollRange + verticalOffset == 0) {
                     this@MoviesFragment.collapsing_toolbar.title = this@MoviesFragment.getString(R.string.movies)
+                    this@MoviesFragment.toolbar.setBackgroundColor(this@MoviesFragment.resources.getColor(R.color.classic_darkTheme_colorPrimaryDark))
                     isShow = true
                 } else if (isShow) { // display an empty string when toolbar is expanded
                     this@MoviesFragment.collapsing_toolbar.title = ""
+
                     isShow = false
                 }
             }
