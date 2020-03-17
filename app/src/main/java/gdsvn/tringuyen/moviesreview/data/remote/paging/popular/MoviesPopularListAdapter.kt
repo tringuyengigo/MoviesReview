@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import gdsvn.tringuyen.moviesreview.data.local.model.Movie
 import gdsvn.tringuyen.moviesreview.data.remote.paging.common.ListFooterViewHolder
 import gdsvn.tringuyen.moviesreview.data.remote.paging.common.State
+import gdsvn.tringuyen.moviesreview.data.remote.paging.top.MoviesTopParentAdapter
 
 class MoviesPopularListAdapter(private val retry: () -> Unit) : PagedListAdapter<Movie, RecyclerView.ViewHolder>(
     NewsDiffCallback

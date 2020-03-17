@@ -8,16 +8,16 @@
     <fragment
         android:id="@+id/moviesFragment"
         android:name="gdsvn.tringuyen.moviesreview.presentation.ui.fragment.movies.MoviesFragment"
-        android:label="popular_fragment"
-        tools:layout="@layout/movies_fragment" />
+        android:label="moviesFragment"
+        tools:layout="@layout/movies_fragment_main_layout" />
     <fragment
         android:id="@+id/tvShowsFragment"
-        android:name="gdsvn.tringuyen.moviesreview.presentation.ui.fragment.favorites.FavoritesFragment"
-        android:label="top_rated_fragment"
-        tools:layout="@layout/tv_show_fragment" />
+        android:name="gdsvn.tringuyen.moviesreview.presentation.ui.fragment.show.TVShowFragment"
+        android:label="tvShowsFragment"
+        tools:layout="@layout/tv_show_fragment_main_layout" />
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="gdsvn.tringuyen.moviesreview.presentation.ui.fragment.show.TVShowFragment"
-        android:label="now_play_fragment"
-        tools:layout="@layout/favorites_fragment" />
+        android:name="gdsvn.tringuyen.moviesreview.presentation.ui.fragment.favorites.FavoritesFragment"
+        android:label="favoritesFragment"
+        tools:layout="@layout/favorites_fragment_main_layout" />
 </navigation>

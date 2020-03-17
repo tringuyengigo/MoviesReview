@@ -1,4 +1,4 @@
-package gdsvn.tringuyen.moviesreview.data.remote.paging.popular
+package gdsvn.tringuyen.moviesreview.data.remote.paging.top
 
 import android.view.LayoutInflater
 import android.view.View

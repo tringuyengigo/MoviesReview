@@ -15,4 +15,7 @@
         <item name="android:textColorSecondary">#EEEEEE</item>
     </style>
 
+    <style name="PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
+
+
 </resources>
