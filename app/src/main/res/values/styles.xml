@@ -15,7 +15,19 @@
         <item name="android:textColorSecondary">#EEEEEE</item>
     </style>
 
-    <style name="PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
+    <style name="PopupOverlay" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/classic_darkTheme_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/classic_darkTheme_colorPrimaryDark</item>
+        <item name="colorAccent">@color/classic_darkTheme_colorAccent</item>
+    </style>
+
+    <!-- Light theme. -->
+    <style name="BaseTheme.Light" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/classic_darkTheme_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/classic_darkTheme_colorPrimaryDark</item>
+        <item name="colorAccent">@color/classic_darkTheme_colorAccent</item>
+    </style>
 
     <style name="CollapsedAppBar" parent="@android:style/TextAppearance.Medium">
         <item name="android:textSize">24sp</item>

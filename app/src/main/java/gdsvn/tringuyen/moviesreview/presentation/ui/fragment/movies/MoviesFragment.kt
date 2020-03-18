@@ -73,11 +73,13 @@ class MoviesFragment : Fragment() {
             textview_popular.visibility =View.GONE
             textview_top.visibility =View.GONE
         }
+
     }
 
     private fun setupToolbar() {
         handleCollapsedToolbarTitle()
     }
+
 
     private fun initAdapter() {
 
@@ -120,6 +122,7 @@ class MoviesFragment : Fragment() {
             }
             if (!moviesPopularViewModel.listIsEmpty()) {
                 mMoviesListAdapter.setState(state ?: State.DONE)
+
             }
         })
     }
