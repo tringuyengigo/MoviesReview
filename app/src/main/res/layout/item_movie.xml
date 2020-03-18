@@ -8,6 +8,7 @@
     card_view:cardBackgroundColor="@color/classic_darkTheme_colorPrimaryDark"
     card_view:cardCornerRadius="4dp"
     card_view:cardElevation="2dp"
+    android:theme="@style/AppTheme"
     card_view:cardUseCompatPadding="true">
 
     <LinearLayout

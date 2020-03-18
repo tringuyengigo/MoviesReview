@@ -34,10 +34,11 @@
                 android:id="@+id/textview_popular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="@string/popular"
                 android:textColor="@color/text_light"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/first_recycler_view"
@@ -54,10 +55,11 @@
                 android:id="@+id/textview_now"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="@string/now_play"
                 android:textColor="@color/text_light"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/second_recycler_view"
@@ -74,10 +76,11 @@
                 android:id="@+id/textview_top"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="@string/top_rated"
                 android:textColor="@color/text_light"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/third_recycler_view"
