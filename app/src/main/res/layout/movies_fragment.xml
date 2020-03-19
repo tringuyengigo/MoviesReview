@@ -31,17 +31,42 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                android:id="@+id/textview_up_coming"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/up_coming"
+                android:textColor="@color/text_light"
+                android:textSize="16sp"
+                android:textStyle="normal" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/up_comming_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@color/classic_darkTheme_colorPrimary"
+                android:orientation="horizontal"
+                app:msrv_gravity="center"
+                app:msrv_ms_per_inch="@dimen/low_speed"
+                app:msrv_snap_count="2" />
+
+            <TextView
                 android:id="@+id/textview_popular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
                 android:text="@string/popular"
                 android:textColor="@color/text_light"
                 android:textSize="16sp"
                 android:textStyle="normal" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/first_recycler_view"
+                android:id="@+id/popular_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -55,14 +80,16 @@
                 android:id="@+id/textview_now"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
                 android:text="@string/now_play"
                 android:textColor="@color/text_light"
                 android:textSize="16sp"
                 android:textStyle="normal" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/second_recycler_view"
+                android:id="@+id/now_playing_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -76,14 +103,16 @@
                 android:id="@+id/textview_top"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
                 android:text="@string/top_rated"
                 android:textColor="@color/text_light"
                 android:textSize="16sp"
                 android:textStyle="normal" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/third_recycler_view"
+                android:id="@+id/top_rate_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -92,6 +121,9 @@
                 app:msrv_gravity="center"
                 app:msrv_ms_per_inch="@dimen/low_speed"
                 app:msrv_snap_count="2" />
+
+
+
         </LinearLayout>
 
         <ProgressBar

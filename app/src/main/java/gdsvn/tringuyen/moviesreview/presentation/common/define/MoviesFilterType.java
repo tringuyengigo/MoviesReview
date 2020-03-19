@@ -1,4 +1,4 @@
-package gdsvn.tringuyen.moviesreview.presentation.common;
+package gdsvn.tringuyen.moviesreview.presentation.common.define;
 
 /**
  * @author Yassin Ajdi.

@@ -1,4 +1,4 @@
-package gdsvn.tringuyen.moviesreview.presentation
+package gdsvn.tringuyen.moviesreview
 
 import android.app.Application
 import gdsvn.tringuyen.moviesreview.BuildConfig
@@ -10,7 +10,7 @@ import gdsvn.tringuyen.moviesreview.presentation.di.mViewModels
 import org.koin.android.ext.android.startKoin
 import timber.log.Timber
 
-class MoviesApp : Application() {
+class Application : Application() {
 
     override fun onCreate() {
         super.onCreate()

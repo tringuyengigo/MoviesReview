@@ -33,14 +33,16 @@
                 app:expandedTitleMarginStart="48dp"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-                <ImageView
-                    android:id="@+id/image_movie_backdrop"
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/view_paper_poster"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
                     app:layout_collapseMode="parallax"
-                    tools:background="@tools:sample/backgrounds/scenic" />
+                    tools:background="@tools:sample/backgrounds/scenic"/>
+
 
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"

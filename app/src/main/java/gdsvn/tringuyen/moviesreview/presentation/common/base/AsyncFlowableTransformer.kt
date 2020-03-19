@@ -1,4 +1,4 @@
-package gdsvn.tringuyen.moviesreview.presentation.common
+package gdsvn.tringuyen.moviesreview.presentation.common.base
 
 import gdsvn.tringuyen.moviesreview.domain.common.FlowableRxTransformer
 import io.reactivex.Flowable

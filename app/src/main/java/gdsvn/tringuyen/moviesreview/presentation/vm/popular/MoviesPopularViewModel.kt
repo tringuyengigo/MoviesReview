@@ -11,8 +11,8 @@ import gdsvn.tringuyen.moviesreview.data.remote.paging.common.MoviesDataSource
 import gdsvn.tringuyen.moviesreview.data.remote.paging.common.MoviesDataSourceFactory
 import gdsvn.tringuyen.moviesreview.data.remote.paging.common.State
 import gdsvn.tringuyen.moviesreview.domain.usecase.GetMoviesPopularUseCase
-import gdsvn.tringuyen.moviesreview.presentation.common.BaseViewModel
-import gdsvn.tringuyen.moviesreview.presentation.common.Data
+import gdsvn.tringuyen.moviesreview.presentation.common.base.BaseViewModel
+import gdsvn.tringuyen.moviesreview.presentation.common.define.Data
 
 
 class MoviesPopularViewModel(private val getMoviesPopularUseCase: GetMoviesPopularUseCase) : BaseViewModel() {

@@ -1,4 +1,4 @@
-package gdsvn.tringuyen.moviesreview.presentation.common
+package gdsvn.tringuyen.moviesreview.presentation.common.base
 
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable

@@ -3,43 +3,42 @@ package gdsvn.tringuyen.moviesreview.presentation.ui.fragment.movies
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.*
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
 import gdsvn.tringuyen.moviesreview.R
 import gdsvn.tringuyen.moviesreview.data.local.model.Movie
 import gdsvn.tringuyen.moviesreview.data.remote.paging.common.State
 import gdsvn.tringuyen.moviesreview.data.remote.paging.now.MoviesNowListAdapter
+import gdsvn.tringuyen.moviesreview.data.remote.paging.popular.MoviesPopularListAdapter
+import gdsvn.tringuyen.moviesreview.data.remote.paging.upcoming.MoviesUpComingListAdapter
 import gdsvn.tringuyen.moviesreview.data.remote.paging.top.MoviesTopListAdapter
-import gdsvn.tringuyen.moviesreview.presentation.common.Define
+import gdsvn.tringuyen.moviesreview.presentation.common.adapter.MoviesViewPagerAdapter
 import gdsvn.tringuyen.moviesreview.presentation.vm.popular.MoviesPopularViewModel
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
+import kotlinx.android.synthetic.main.item_poster.view.*
 import kotlinx.android.synthetic.main.movies_fragment.*
 import kotlinx.android.synthetic.main.movies_fragment_main_layout.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
-
 class MoviesFragment : Fragment() {
 
     private val moviesPopularViewModel: MoviesPopularViewModel by viewModel()
-    private lateinit var mMoviesListAdapter: MoviesTopListAdapter
+
+    private lateinit var mMoviesUpComingListAdapter: MoviesUpComingListAdapter
+    private lateinit var mMoviesPopularListAdapter: MoviesPopularListAdapter
     private lateinit var mMoviesNowListAdapter: MoviesNowListAdapter
     private lateinit var mMoviesTopListAdapter: MoviesTopListAdapter
 
-    companion object {
-        fun newInstance() = MoviesFragment()
-    }
+    private lateinit var moviesAdapter: MoviesViewPagerAdapter
 
     override fun onCreateView (
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,102 +54,115 @@ class MoviesFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        //set app is fullscreen
-        this.activity?.window?.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        showListMovie(false)
-        setupToolbar()
+        initUI()
+        showTitleListMovie(false)
+        processToolbar()
         initAdapter()
         initState()
     }
 
-    private fun showListMovie(isShow: Boolean) {
+    private fun initUI() {
+        this.activity?.window?.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+    }
+
+    private fun showTitleListMovie(isShow: Boolean) {
         if(isShow) {
-            textview_now.visibility =View.VISIBLE
-            textview_popular.visibility =View.VISIBLE
-            textview_top.visibility =View.VISIBLE
+            textview_now.visibility = View.VISIBLE
+            textview_popular.visibility = View.VISIBLE
+            textview_top.visibility = View.VISIBLE
+            textview_up_coming.visibility = View.VISIBLE
         } else {
-            textview_now.visibility =View.GONE
-            textview_popular.visibility =View.GONE
-            textview_top.visibility =View.GONE
+            textview_now.visibility = View.GONE
+            textview_popular.visibility = View.GONE
+            textview_top.visibility = View.GONE
+            textview_up_coming.visibility = View.GONE
+        }
+    }
+
+    private fun processToolbar() {
+        handleCollapsedToolbarTitle()
+    }
+
+    private fun initAdapter() {
+
+        mMoviesUpComingListAdapter = MoviesUpComingListAdapter { moviesPopularViewModel.retry() }
+        up_comming_recycler_view.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        up_comming_recycler_view.adapter = mMoviesUpComingListAdapter
+
+        mMoviesPopularListAdapter = MoviesPopularListAdapter { moviesPopularViewModel.retry() }
+        popular_recycler_view.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        popular_recycler_view.adapter = mMoviesPopularListAdapter
+
+        mMoviesNowListAdapter = MoviesNowListAdapter { moviesPopularViewModel.retry() }
+        now_playing_recycler_view.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        now_playing_recycler_view.adapter = mMoviesNowListAdapter
+
+        mMoviesTopListAdapter = MoviesTopListAdapter { moviesPopularViewModel.retry() }
+        top_rate_recycler_view.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        top_rate_recycler_view.adapter = mMoviesTopListAdapter
+
+        moviesAdapter = MoviesViewPagerAdapter()
+
+        moviesPopularViewModel.movieList.observe(this, Observer { listMovie ->
+            mMoviesUpComingListAdapter.submitList(listMovie)
+            mMoviesPopularListAdapter.submitList(listMovie)
+            mMoviesNowListAdapter.submitList(listMovie)
+            mMoviesTopListAdapter.submitList(listMovie)
+
+            if(!listMovie.isEmpty()) {
+                showPoster(listMovie)
+                moviesAdapter.movies = listMovie
+                showTitleListMovie(true)
+            }
+        })
+
+
+        with(view_paper_poster) {
+            adapter = moviesAdapter
+            setPageTransformer { page, position ->
+                setParallaxTransformation(page, position)
+            }
         }
 
     }
 
-    private fun setupToolbar() {
-        handleCollapsedToolbarTitle()
-    }
-
-
-    private fun initAdapter() {
-
-        mMoviesListAdapter = MoviesTopListAdapter { moviesPopularViewModel.retry() }
-        first_recycler_view.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        first_recycler_view.adapter = mMoviesListAdapter
-        moviesPopularViewModel.movieList.observe(this, Observer {
-            mMoviesListAdapter.submitList(it)
-        })
-
-        mMoviesNowListAdapter = MoviesNowListAdapter { moviesPopularViewModel.retry() }
-        second_recycler_view.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        second_recycler_view.adapter = mMoviesNowListAdapter
-        moviesPopularViewModel.movieList.observe(this, Observer { listMovie ->
-
-            mMoviesNowListAdapter.submitList(listMovie)
-            if(!listMovie.isEmpty()) {
-                showPoster(listMovie)
-                showListMovie(true)
-            }
-
-        })
-
-        mMoviesTopListAdapter = MoviesTopListAdapter { moviesPopularViewModel.retry() }
-        third_recycler_view.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        third_recycler_view.adapter = mMoviesTopListAdapter
-        moviesPopularViewModel.movieList.observe(this, Observer {
-            mMoviesTopListAdapter.submitList(it)
-        })
-
-    }
 
     private fun initState() {
         txt_error.setOnClickListener { moviesPopularViewModel.retry() }
         moviesPopularViewModel.getState().observe(this, Observer { state ->
+
             progress_bar.visibility = if (moviesPopularViewModel.listIsEmpty() && state == State.LOADING) View.VISIBLE else View.GONE
             txt_error.visibility = if (moviesPopularViewModel.listIsEmpty() && state == State.ERROR) View.VISIBLE else View.GONE
-            if (moviesPopularViewModel.listIsEmpty() && state == State.ERROR) {
-                showListMovie(false)
-            }
-            if (!moviesPopularViewModel.listIsEmpty()) {
-                mMoviesListAdapter.setState(state ?: State.DONE)
 
+            if (moviesPopularViewModel.listIsEmpty() && state == State.ERROR) { showTitleListMovie(false) }
+
+            if (!moviesPopularViewModel.listIsEmpty()) {
+                mMoviesPopularListAdapter.setState(state ?: State.DONE)
             }
         })
     }
 
     /**
-     * Sets 20 poster on the imageView every 5(s) with animation. Maybe I will change imageView to Recycle view to load all image.
+     * Sets 20 poster on the imageView every 5(s) with animation.
      */
     @SuppressLint("CheckResult")
     private fun showPoster(listMovie: PagedList<Movie>) {
         Timber.d("Start show poster ---------------------------------")
+        val list = IntRange(0, listMovie.size).toList()
         Observable.interval(0,5, TimeUnit.SECONDS)
-            .map { i -> listMovie[i.toInt()] }
-            .take(listMovie.size.toLong())
+            .map { i -> list[i.toInt()] }
+            .take(list.size.toLong())
             .repeatWhen { completed -> completed.delay(2, TimeUnit.SECONDS) }
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {movie ->
-                val posterURL = Define.URL_LOAD_IMAGE + movie!!.backdrop_path
-                val animFadeIn: Animation = AnimationUtils.loadAnimation(
-                    this.context,
-                    R.anim.fade_in
-                )
-                image_movie_backdrop.startAnimation(animFadeIn)
-
-                Glide.with(this)
-                    .load(posterURL)
-                    .into(image_movie_backdrop);
-
+            .doOnError {error ->
+                Timber.e("showPoster error ${error.message}")
             }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { currentItem ->
+                    this.view_paper_poster.currentItem = currentItem
+                }, { throwable -> Timber.e("showPoster ---> error ${throwable.message} ")}
+            )
+
     }
 
     /**
@@ -171,13 +183,30 @@ class MoviesFragment : Fragment() {
                     this@MoviesFragment.collapsing_toolbar.setCollapsedTitleTextAppearance(R.style.CollapsedAppBar);
                     isShow = true
                 } else if (isShow) { // display an empty string when toolbar is expanded
-                    this@MoviesFragment.collapsing_toolbar.title = this@MoviesFragment.getString(R.string.movies)
+                    this@MoviesFragment.collapsing_toolbar.title = ""
                     this@MoviesFragment.collapsing_toolbar.setExpandedTitleColor(resources.getColor(R.color.text_light))
                     this@MoviesFragment.collapsing_toolbar.setExpandedTitleTextAppearance(R.style.ExpandedAppBar);
                     isShow = false
                 }
             }
         })
+    }
+
+    private fun setParallaxTransformation(page: View, position: Float) {
+        page.apply {
+            val parallaxView = this.image_view_poster
+            when {
+                position < -1 -> // [-Infinity,-1)
+                    // This page is way off-screen to the left.
+                    alpha = 1f
+                position <= 1 -> { // [-1,1]
+                    parallaxView.translationX = -position * (width / 2) //Half the normal speed
+                }
+                else -> // (1,+Infinity]
+                    // This page is way off-screen to the right.
+                    alpha = 1f
+            }
+        }
     }
 
 }

@@ -28,7 +28,7 @@ class MoviesPopularListAdapter(private val retry: () -> Unit) : PagedListAdapter
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (getItemViewType(position) == DATA_VIEW_TYPE)
-            (holder as MoviesTopParentAdapter).bind(getItem(position))
+            (holder as MoviesPopularParentAdapter).bind(getItem(position))
         else (holder as ListFooterViewHolder).bind(state)
     }
 

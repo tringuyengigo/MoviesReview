@@ -1,4 +1,4 @@
-package gdsvn.tringuyen.moviesreview.data.remote.paging.top
+package gdsvn.tringuyen.moviesreview.data.remote.paging.upcoming
 
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
@@ -7,9 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import gdsvn.tringuyen.moviesreview.data.local.model.Movie
 import gdsvn.tringuyen.moviesreview.data.remote.paging.common.ListFooterViewHolder
 import gdsvn.tringuyen.moviesreview.data.remote.paging.common.State
-import gdsvn.tringuyen.moviesreview.data.remote.paging.popular.MoviesPopularParentAdapter
 
-class MoviesTopListAdapter(private val retry: () -> Unit) : PagedListAdapter<Movie, RecyclerView.ViewHolder>(
+class MoviesUpComingListAdapter(private val retry: () -> Unit) : PagedListAdapter<Movie, RecyclerView.ViewHolder>(
     NewsDiffCallback
 ) {
 
@@ -20,7 +19,7 @@ class MoviesTopListAdapter(private val retry: () -> Unit) : PagedListAdapter<Mov
         State.LOADING
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return if (viewType == DATA_VIEW_TYPE) MoviesTopParentAdapter.create(parent) else ListFooterViewHolder.create(
+        return if (viewType == DATA_VIEW_TYPE) MoviesUpComingParentAdapter.create(parent) else ListFooterViewHolder.create(
             retry,
             parent
         )
@@ -28,7 +27,7 @@ class MoviesTopListAdapter(private val retry: () -> Unit) : PagedListAdapter<Mov
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (getItemViewType(position) == DATA_VIEW_TYPE)
-            (holder as MoviesTopParentAdapter).bind(getItem(position))
+            (holder as MoviesUpComingParentAdapter).bind(getItem(position))
         else (holder as ListFooterViewHolder).bind(state)
     }
 
