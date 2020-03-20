@@ -56,7 +56,7 @@
             android:clipToPadding="false"
             android:paddingBottom="16dp"
             app:behavior_overlapTop="48dp"
-            android:background="@color/classic_darkTheme_colorPrimary"
+            android:background="@color/classic_darkTheme_colorTintedBackground"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <include

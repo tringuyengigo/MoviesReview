@@ -3,21 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_movie"
-    app:startDestination="@id/moviesFragment">
+    app:startDestination="@id/navi_movies">
 
     <fragment
-        android:id="@+id/moviesFragment"
+        android:id="@+id/navi_movies"
         android:name="gdsvn.tringuyen.moviesreview.presentation.ui.fragment.movies.MoviesFragment"
-        android:label="moviesFragment"
+        android:label="navi_movies"
         tools:layout="@layout/movies_fragment_main_layout" />
     <fragment
-        android:id="@+id/tvShowsFragment"
+        android:id="@+id/navi_tv_show"
         android:name="gdsvn.tringuyen.moviesreview.presentation.ui.fragment.show.TVShowFragment"
-        android:label="tvShowsFragment"
+        android:label="navi_tv_show"
         tools:layout="@layout/tv_show_fragment_main_layout" />
     <fragment
-        android:id="@+id/favoritesFragment"
+        android:id="@+id/navi_favorites"
         android:name="gdsvn.tringuyen.moviesreview.presentation.ui.fragment.favorites.FavoritesFragment"
-        android:label="favoritesFragment"
+        android:label="navi_favorites"
         tools:layout="@layout/favorites_fragment_main_layout" />
+
 </navigation>

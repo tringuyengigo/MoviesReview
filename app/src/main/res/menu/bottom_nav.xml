@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/moviesFragment"
+        android:id="@+id/navi_movies"
+        android:icon="@drawable/ic_movie"
         android:title="@string/movies"/>
     <item
-        android:id="@+id/tvShowsFragment"
+        android:id="@+id/navi_tv_show"
+        android:icon="@drawable/ic_tv_show"
         android:title="@string/tv_shows"/>
     <item
-        android:id="@+id/favoritesFragment"
+        android:id="@+id/navi_favorites"
+        android:icon="@drawable/ic_favorite"
         android:title="@string/favorites"/>
 </menu>

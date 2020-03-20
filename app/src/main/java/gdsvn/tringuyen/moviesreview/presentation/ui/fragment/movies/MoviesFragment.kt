@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.paging.PagedList
@@ -16,8 +17,8 @@ import gdsvn.tringuyen.moviesreview.data.local.model.Movie
 import gdsvn.tringuyen.moviesreview.data.remote.paging.common.State
 import gdsvn.tringuyen.moviesreview.data.remote.paging.now.MoviesNowListAdapter
 import gdsvn.tringuyen.moviesreview.data.remote.paging.popular.MoviesPopularListAdapter
-import gdsvn.tringuyen.moviesreview.data.remote.paging.upcoming.MoviesUpComingListAdapter
 import gdsvn.tringuyen.moviesreview.data.remote.paging.top.MoviesTopListAdapter
+import gdsvn.tringuyen.moviesreview.data.remote.paging.upcoming.MoviesUpComingListAdapter
 import gdsvn.tringuyen.moviesreview.presentation.common.adapter.MoviesViewPagerAdapter
 import gdsvn.tringuyen.moviesreview.presentation.vm.popular.MoviesPopularViewModel
 import io.reactivex.Observable
@@ -29,6 +30,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
+
 class MoviesFragment : Fragment() {
 
     private val moviesPopularViewModel: MoviesPopularViewModel by viewModel()
@@ -39,7 +41,7 @@ class MoviesFragment : Fragment() {
     private lateinit var mMoviesTopListAdapter: MoviesTopListAdapter
 
     private lateinit var moviesAdapter: MoviesViewPagerAdapter
-
+    private lateinit var drawer: DrawerLayout
     override fun onCreateView (
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,7 +52,9 @@ class MoviesFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         (activity as? AppCompatActivity)?.supportActionBar?.hide()
+
     }
+
 
     override fun onStart() {
         super.onStart()
@@ -63,6 +67,7 @@ class MoviesFragment : Fragment() {
 
     private fun initUI() {
         this.activity?.window?.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        val drawer = activity!!.findViewById<View>(R.id.drawer_layout) as DrawerLayout
     }
 
     private fun showTitleListMovie(isShow: Boolean) {
@@ -178,11 +183,14 @@ class MoviesFragment : Fragment() {
                 }
                 // verify if the toolbar is completely collapsed and set the movie name as the title
                 if (scrollRange + verticalOffset == 0) {
+                    toolbar.setBackgroundColor(resources.getColor(R.color.classic_darkTheme_colorBackground))
                     this@MoviesFragment.collapsing_toolbar.title = this@MoviesFragment.getString(R.string.movies)
                     this@MoviesFragment.collapsing_toolbar.setCollapsedTitleTextColor(resources.getColor(R.color.text_light))
                     this@MoviesFragment.collapsing_toolbar.setCollapsedTitleTextAppearance(R.style.CollapsedAppBar);
                     isShow = true
-                } else if (isShow) { // display an empty string when toolbar is expanded
+                } else if (isShow) {
+                    // display an empty string when toolbar is expanded
+                    toolbar.setBackgroundColor(resources.getColor(R.color.colorBackground))
                     this@MoviesFragment.collapsing_toolbar.title = ""
                     this@MoviesFragment.collapsing_toolbar.setExpandedTitleColor(resources.getColor(R.color.text_light))
                     this@MoviesFragment.collapsing_toolbar.setExpandedTitleTextAppearance(R.style.ExpandedAppBar);
@@ -208,5 +216,9 @@ class MoviesFragment : Fragment() {
             }
         }
     }
+
+    private fun openDrawer() { drawer.openDrawer(Gravity.RIGHT) }
+
+    private fun closeDrawer() { drawer.closeDrawer(Gravity.RIGHT) }
 
 }

@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/classic_darkTheme_colorPrimary"
+        android:background="@color/classic_darkTheme_colorTintedBackground"
         android:descendantFocusability="blocksDescendants">
 
         <androidx.constraintlayout.widget.Guideline
@@ -23,7 +23,7 @@
             android:id="@+id/ln_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/classic_darkTheme_colorPrimary"
+            android:background="@color/classic_darkTheme_colorTintedBackground"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:background="@color/classic_darkTheme_colorPrimary"
+                android:background="@color/classic_darkTheme_colorTintedBackground"
                 android:orientation="horizontal"
                 app:msrv_gravity="center"
                 app:msrv_ms_per_inch="@dimen/low_speed"
@@ -70,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:background="@color/classic_darkTheme_colorPrimary"
+                android:background="@color/classic_darkTheme_colorTintedBackground"
                 android:orientation="horizontal"
                 app:msrv_gravity="start"
                 app:msrv_ms_per_inch="@dimen/normal_speed"
@@ -93,7 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:background="@color/classic_darkTheme_colorPrimary"
+                android:background="@color/classic_darkTheme_colorTintedBackground"
                 android:orientation="horizontal"
                 app:msrv_gravity="center"
                 app:msrv_ms_per_inch="@dimen/low_speed"

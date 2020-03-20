@@ -34,7 +34,16 @@
     <color name="splashBackground">#1E88E5</color>
 
     <color name="text_light">#ffffff</color>
+    <color name="icon_state_active">#ffffff</color>
+    <color name="icon_state_positive">#90a4ae</color>
+
     <color name="text_dark">#000000</color>
     <color name="tab_indicator">#ffffff</color>
     <color name="black_overlay">#66000000</color>
+
+    <color name="colorRed">#68091B</color>
+    <color name="colorBlue">#092c68</color>
+    <color name="colorGreen">#0c6809</color>
+    <color name="colorOrange">#FF4500</color>
+
 </resources>

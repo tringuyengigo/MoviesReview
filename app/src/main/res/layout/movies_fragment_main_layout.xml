@@ -41,7 +41,11 @@
                     android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
                     app:layout_collapseMode="parallax"
-                    tools:background="@tools:sample/backgrounds/scenic"/>
+                    tools:background="@tools:sample/backgrounds/scenic">
+
+
+                </androidx.viewpager2.widget.ViewPager2>
+
 
 
                 <androidx.appcompat.widget.Toolbar

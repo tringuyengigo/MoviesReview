@@ -5,7 +5,7 @@
     android:id="@+id/card_view"
     android:layout_width="150dp"
     android:layout_height="250dp"
-    card_view:cardBackgroundColor="@color/classic_darkTheme_colorPrimaryDark"
+    card_view:cardBackgroundColor="@color/classic_darkTheme_colorPrimary"
     card_view:cardCornerRadius="4dp"
     card_view:cardElevation="2dp"
     android:theme="@style/AppTheme"
