@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:theme="@style/AppTheme"
-    tools:context=".presentation.ui.main.MainActivity">
+    tools:context=".presentation.ui.activity.main.HomeMovieActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

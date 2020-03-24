@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1078772335971",
+    "firebase_url": "https://mvvm-user-3efc3.firebaseio.com",
+    "project_id": "mvvm-user-3efc3",
+    "storage_bucket": "mvvm-user-3efc3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078772335971:android:be3a1cfdbec7476e75ff56",
+        "android_client_info": {
+          "package_name": "gdsvn.tringuyen.moviesreview"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078772335971-6v35hn72kob31u4t65b4o1k2gcdq2e69.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "gdsvn.tringuyen.moviesreview",
+            "certificate_hash": "5638be3278ce7eac1aea7d8ddea6a426a1e650a6"
+          }
+        },
+        {
+          "client_id": "1078772335971-2rk66v0lq6jr5fj8mjkk575lvr60c7ue.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9A90uTUWECxMHV_NeyzhP7dT6tk2iA2o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1078772335971-2rk66v0lq6jr5fj8mjkk575lvr60c7ue.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

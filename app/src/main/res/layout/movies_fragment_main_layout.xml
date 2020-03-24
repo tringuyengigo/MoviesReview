@@ -42,8 +42,6 @@
                     android:scaleType="centerCrop"
                     app:layout_collapseMode="parallax"
                     tools:background="@tools:sample/backgrounds/scenic">
-
-
                 </androidx.viewpager2.widget.ViewPager2>
 
 
@@ -64,8 +62,8 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:paddingBottom="16dp"
-            app:behavior_overlapTop="48dp"
             android:background="@color/classic_darkTheme_colorPrimary"
+            app:behavior_overlapTop="48dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <include

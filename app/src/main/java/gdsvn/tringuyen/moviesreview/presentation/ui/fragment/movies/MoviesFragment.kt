@@ -4,12 +4,15 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
 import gdsvn.tringuyen.moviesreview.R
@@ -26,6 +29,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.item_poster.view.*
 import kotlinx.android.synthetic.main.movies_fragment.*
 import kotlinx.android.synthetic.main.movies_fragment_main_layout.*
+import kotlinx.android.synthetic.main.nav_header_main.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
@@ -42,23 +46,35 @@ class MoviesFragment : Fragment() {
 
     private lateinit var moviesAdapter: MoviesViewPagerAdapter
     private lateinit var drawer: DrawerLayout
+
+
     override fun onCreateView (
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.movies_fragment_main_layout, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        (activity as? AppCompatActivity)?.supportActionBar?.hide()
-
+        initUI()
+        initMenuToolbar()
     }
 
+    private fun initMenuToolbar() {
+        toolbar.inflateMenu(R.menu.menu_icon)
+        toolbar.setOnMenuItemClickListener {
+            when(it.itemId) {
+                R.id.action_user -> {
+                    openDrawer()
+                }
+            }
+            true
+        }
+    }
 
     override fun onStart() {
         super.onStart()
-        initUI()
         showTitleListMovie(false)
         processToolbar()
         initAdapter()
@@ -66,8 +82,10 @@ class MoviesFragment : Fragment() {
     }
 
     private fun initUI() {
+        (activity as? AppCompatActivity)?.supportActionBar?.hide()
         this.activity?.window?.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        val drawer = activity!!.findViewById<View>(R.id.drawer_layout) as DrawerLayout
+        drawer = activity!!.findViewById<View>(R.id.drawer_layout) as DrawerLayout
+
     }
 
     private fun showTitleListMovie(isShow: Boolean) {
@@ -186,14 +204,14 @@ class MoviesFragment : Fragment() {
                     toolbar.setBackgroundColor(resources.getColor(R.color.classic_darkTheme_colorBackground))
                     this@MoviesFragment.collapsing_toolbar.title = this@MoviesFragment.getString(R.string.movies)
                     this@MoviesFragment.collapsing_toolbar.setCollapsedTitleTextColor(resources.getColor(R.color.text_light))
-                    this@MoviesFragment.collapsing_toolbar.setCollapsedTitleTextAppearance(R.style.CollapsedAppBar);
+//                    this@MoviesFragment.collapsing_toolbar.setCollapsedTitleTextAppearance(R.style.CollapsedAppBar);
                     isShow = true
                 } else if (isShow) {
                     // display an empty string when toolbar is expanded
                     toolbar.setBackgroundColor(resources.getColor(R.color.colorBackground))
                     this@MoviesFragment.collapsing_toolbar.title = ""
                     this@MoviesFragment.collapsing_toolbar.setExpandedTitleColor(resources.getColor(R.color.text_light))
-                    this@MoviesFragment.collapsing_toolbar.setExpandedTitleTextAppearance(R.style.ExpandedAppBar);
+//                    this@MoviesFragment.collapsing_toolbar.setExpandedTitleTextAppearance(R.style.ExpandedAppBar);
                     isShow = false
                 }
             }
@@ -217,8 +235,29 @@ class MoviesFragment : Fragment() {
         }
     }
 
-    private fun openDrawer() { drawer.openDrawer(Gravity.RIGHT) }
+    private fun openDrawer() {
+        drawer.openDrawer(GravityCompat.START)
+        initUserDrawer()
 
-    private fun closeDrawer() { drawer.closeDrawer(Gravity.RIGHT) }
+    }
+
+    private fun initUserDrawer() {
+        context?.let {
+            activity?.nav_header_user_image_view?.let { userImageView ->
+                Glide.with(it)
+                    .load("https://png.pngtree.com/png-clipart/20190924/original/pngtree-business-people-avatar-icon-user-profile-free-vector-png-image_4815126.jpg")
+                    .apply(
+                        RequestOptions
+                            .circleCropTransform()
+                            .error(R.drawable.ic_user))
+                    .into(userImageView)
+
+            }
+
+            activity?.nav_header_user_name?.let { userName ->
+                userName.text = "Nguyen Minh Tri"
+            }
+        }
+    }
 
 }
