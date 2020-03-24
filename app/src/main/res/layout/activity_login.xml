@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/classic_darkTheme_colorBackground">
 
 
         <RelativeLayout
@@ -41,6 +42,7 @@
                     style="@style/LabelStyle"
                     android:layout_below="@id/login_title"
                     android:layout_marginTop="@dimen/layout_in_between_margins"
+                    android:textColor="@color/text_light"
                     android:text="@string/login_welcome_txt" />
 
                 <EditText

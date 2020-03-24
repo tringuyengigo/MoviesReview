@@ -87,8 +87,7 @@ class RegistrationActivity : AppCompatActivity() {
         email = etEmail?.text.toString()
         password = etPassword?.text.toString()
 
-        if (!TextUtils.isEmpty(fullName) && !TextUtils.isEmpty(lastName)
-            && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+        if (!TextUtils.isEmpty(fullName) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
 
             mProgressBar!!.setMessage("Registering User...")
             mProgressBar!!.show()
@@ -154,4 +153,16 @@ class RegistrationActivity : AppCompatActivity() {
                 }
             }
     }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        val rootView: View = window.decorView.findViewById(android.R.id.content)
+        rootView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_FULLSCREEN
+                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+    }
+
 }
