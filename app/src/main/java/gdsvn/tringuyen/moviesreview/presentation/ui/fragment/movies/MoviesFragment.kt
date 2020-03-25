@@ -1,6 +1,7 @@
 package gdsvn.tringuyen.moviesreview.presentation.ui.fragment.movies
 
 import android.annotation.SuppressLint
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
@@ -47,6 +48,7 @@ class MoviesFragment : Fragment() {
     private lateinit var moviesAdapter: MoviesViewPagerAdapter
     private lateinit var drawer: DrawerLayout
 
+    private lateinit var tf : Typeface
 
     override fun onCreateView (
             inflater: LayoutInflater, container: ViewGroup?,
@@ -75,6 +77,7 @@ class MoviesFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
         showTitleListMovie(false)
         processToolbar()
         initAdapter()
@@ -85,7 +88,6 @@ class MoviesFragment : Fragment() {
         (activity as? AppCompatActivity)?.supportActionBar?.hide()
         this.activity?.window?.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         drawer = activity!!.findViewById<View>(R.id.drawer_layout) as DrawerLayout
-
     }
 
     private fun showTitleListMovie(isShow: Boolean) {
@@ -203,15 +205,14 @@ class MoviesFragment : Fragment() {
                 if (scrollRange + verticalOffset == 0) {
                     toolbar.setBackgroundColor(resources.getColor(R.color.classic_darkTheme_colorBackground))
                     this@MoviesFragment.collapsing_toolbar.title = this@MoviesFragment.getString(R.string.movies)
-                    this@MoviesFragment.collapsing_toolbar.setCollapsedTitleTextColor(resources.getColor(R.color.text_light))
-//                    this@MoviesFragment.collapsing_toolbar.setCollapsedTitleTextAppearance(R.style.CollapsedAppBar);
+                    this@MoviesFragment.collapsing_toolbar.setCollapsedTitleTextColor(resources.getColor(R.color.color_text_title))
                     isShow = true
                 } else if (isShow) {
                     // display an empty string when toolbar is expanded
                     toolbar.setBackgroundColor(resources.getColor(R.color.colorBackground))
                     this@MoviesFragment.collapsing_toolbar.title = ""
-                    this@MoviesFragment.collapsing_toolbar.setExpandedTitleColor(resources.getColor(R.color.text_light))
-//                    this@MoviesFragment.collapsing_toolbar.setExpandedTitleTextAppearance(R.style.ExpandedAppBar);
+                    this@MoviesFragment.collapsing_toolbar.setExpandedTitleColor(resources.getColor(R.color.color_text_title))
+
                     isShow = false
                 }
             }

@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="250dp"
         android:text="Name of movie"
         android:textColor="@color/text_light"
         android:textSize="@dimen/movie_title_poster"

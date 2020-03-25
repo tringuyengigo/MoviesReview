@@ -8,11 +8,18 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import gdsvn.tringuyen.moviesreview.R
 import gdsvn.tringuyen.moviesreview.data.local.model.Movie
-import gdsvn.tringuyen.moviesreview.data.remote.paging.top.MoviesTopParentAdapter
 import gdsvn.tringuyen.moviesreview.presentation.common.define.Define
 import kotlinx.android.synthetic.main.item_movie.view.*
 
-class MoviesPopularParentAdapter(view: View) : RecyclerView.ViewHolder(view) {
+
+class MoviesPopularParentAdapter(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
+
+    private var itemMovieClickListener: ItemMoviePopularClickListener? = null
+
+
+    fun setItemClickListener(itemMovieClickListener: ItemMoviePopularClickListener) {
+        this.itemMovieClickListener = itemMovieClickListener
+    }
 
     fun bind(movie: Movie?) {
         if (movie != null) {
@@ -26,6 +33,8 @@ class MoviesPopularParentAdapter(view: View) : RecyclerView.ViewHolder(view) {
                         .error(R.drawable.ic_broken_image)
                 )
                 .into(itemView.image_view_movie)
+
+            itemView.setOnClickListener(this)
         }
     }
 
@@ -37,4 +46,9 @@ class MoviesPopularParentAdapter(view: View) : RecyclerView.ViewHolder(view) {
             )
         }
     }
+
+    override fun onClick(v: View?) {
+        itemMovieClickListener?.onItemMovieClick(v, adapterPosition,false)
+    }
+
 }

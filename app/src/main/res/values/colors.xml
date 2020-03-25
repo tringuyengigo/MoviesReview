@@ -28,16 +28,17 @@
     <color name="classic_darkTheme_colorBackground">#303030</color>
     <color name="classic_darkTheme_colorTintedBackground">#263238</color>
 
-    <color name="classic_blackTheme_colorBackground">#000000</color>
+    <color name="classic_blackTheme_colorBackground">#303030</color>
     <color name="classic_blackTheme_colorTintedBackground">#303030</color>
 
     <color name="splashBackground">#1E88E5</color>
 
     <color name="text_light">#ffffff</color>
-    <color name="icon_state_active">#ffffff</color>
+    <color name="icon_state_active">#ff563f</color>
     <color name="icon_state_positive">#90a4ae</color>
 
     <color name="text_dark">#000000</color>
+
     <color name="tab_indicator">#ffffff</color>
     <color name="black_overlay">#66000000</color>
 
@@ -51,11 +52,16 @@
     <color name="primary_txt">#212121</color>
     <color name="orange">#ff563f</color>
     <color name="fb_blue">#475993</color>
+    <color name="gg_white">#ffffff</color>
     <color name="edit_text_hint">#999999</color>
     <color name="edit_text_txt">#999999</color>
     <color name="edit_text_bg">#f5f5f5</color>
     <color name="divider">#f5f5f5</color>
     <color name="divider_or">#999999</color>
     <color name="account">#999999</color>
+    <color name="color_text_card">#90a4ae</color>
+    <color name="color_text_topic">#f5f5f5</color>
+    <color name="color_text_title">#90a4ae</color>
+
 
 </resources>

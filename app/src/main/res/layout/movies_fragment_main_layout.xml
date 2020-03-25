@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="350dp"
             android:fitsSystemWindows="true"
+            android:background="@color/classic_darkTheme_colorTintedBackground"
             android:theme="@style/AppTheme"
             app:elevation="4dp"
             >
@@ -25,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
-
+                android:fontFamily="@font/sf_pro_display_regular"
                 android:theme="@style/AppTheme"
                 app:contentScrim="?attr/colorPrimary"
                 app:expandedTitleGravity="top|left|start"
@@ -44,8 +45,6 @@
                     tools:background="@tools:sample/backgrounds/scenic">
                 </androidx.viewpager2.widget.ViewPager2>
 
-
-
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
@@ -62,7 +61,7 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:paddingBottom="16dp"
-            android:background="@color/classic_darkTheme_colorPrimary"
+            android:background="@color/classic_darkTheme_colorTintedBackground"
             app:behavior_overlapTop="48dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 

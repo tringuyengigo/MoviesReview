@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -32,15 +31,16 @@
 
             <TextView
                 android:id="@+id/textview_up_coming"
+                style="@style/LabelStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/up_coming"
-                android:textColor="@color/text_light"
+                android:textColor="@color/color_text_topic"
                 android:textSize="16sp"
-                android:textStyle="normal" />
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/up_comming_recycler_view"
@@ -55,15 +55,16 @@
 
             <TextView
                 android:id="@+id/textview_popular"
+                style="@style/LabelStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/popular"
-                android:textColor="@color/text_light"
+                android:textColor="@color/color_text_topic"
                 android:textSize="16sp"
-                android:textStyle="normal" />
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/popular_recycler_view"
@@ -78,15 +79,16 @@
 
             <TextView
                 android:id="@+id/textview_now"
+                style="@style/LabelStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/now_play"
-                android:textColor="@color/text_light"
+                android:textColor="@color/color_text_topic"
                 android:textSize="16sp"
-                android:textStyle="normal" />
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/now_playing_recycler_view"
@@ -101,22 +103,23 @@
 
             <TextView
                 android:id="@+id/textview_top"
+                style="@style/LabelStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/top_rated"
-                android:textColor="@color/text_light"
+                android:textColor="@color/color_text_topic"
                 android:textSize="16sp"
-                android:textStyle="normal" />
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/top_rate_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:background="@color/classic_darkTheme_colorPrimary"
+                android:background="@color/classic_darkTheme_colorTintedBackground"
                 android:orientation="horizontal"
                 app:msrv_gravity="center"
                 app:msrv_ms_per_inch="@dimen/low_speed"

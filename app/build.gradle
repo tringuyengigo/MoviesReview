@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.gms.google-services'
 
+
 android {
     compileSdkVersion 29
 
@@ -141,6 +142,17 @@ dependencies {
 
     implementation "com.mikepenz:iconics-core:3.0.2@aar"
     implementation 'com.mikepenz:fontawesome-typeface:5.0.6.0@aar'
+
+    // Login with facebook
+    implementation 'com.facebook.android:facebook-login:4.41.0'
+
+    //firebase
+    implementation 'com.google.firebase:firebase-core:17.2.3'
+    implementation 'com.google.firebase:firebase-auth:19.3.0'
+
+    //play service auth
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
+
 
 
 }

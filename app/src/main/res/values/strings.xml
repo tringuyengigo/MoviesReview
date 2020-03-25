@@ -40,6 +40,8 @@
     <string name="login_fb_btn_label">"{faw-facebook-f}    Login with Facebook"</string>
     <string name="signup_fb_btn_label">"{faw-facebook-f}    Sign up with Facebook"</string>
 
+    <string name="login_google_btn_label">"Login with Google"</string>
+
     <string name="get_started_btn_label">Get Started</string>
 
     <!--Edit Text hints-->
@@ -53,5 +55,8 @@
     <string name="no_account">Don\’t have an account?</string>
     <string name="have_account">Have an account?</string>
     <string name="divider_or">OR</string>
+
+    <string name="app_id">1078772335971</string>
+
 
 </resources>

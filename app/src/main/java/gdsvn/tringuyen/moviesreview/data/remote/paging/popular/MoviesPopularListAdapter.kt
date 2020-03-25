@@ -1,17 +1,24 @@
 package gdsvn.tringuyen.moviesreview.data.remote.paging.popular
 
+import android.content.Intent
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import gdsvn.tringuyen.moviesreview.data.local.model.Movie
 import gdsvn.tringuyen.moviesreview.data.remote.paging.common.ListFooterViewHolder
 import gdsvn.tringuyen.moviesreview.data.remote.paging.common.State
-import gdsvn.tringuyen.moviesreview.data.remote.paging.top.MoviesTopParentAdapter
+import gdsvn.tringuyen.moviesreview.presentation.ui.activity.MovieDetailActivity
+import gdsvn.tringuyen.moviesreview.presentation.ui.activity.login.ForgotPasswordActivity
+import gdsvn.tringuyen.moviesreview.presentation.ui.activity.registration.RegistrationActivity
+import timber.log.Timber
 
-class MoviesPopularListAdapter(private val retry: () -> Unit) : PagedListAdapter<Movie, RecyclerView.ViewHolder>(
-    NewsDiffCallback
-) {
+
+class MoviesPopularListAdapter(private val retry: () -> Unit) : PagedListAdapter<Movie, RecyclerView.ViewHolder>( NewsDiffCallback ) {
 
     private val DATA_VIEW_TYPE = 1
     private val FOOTER_VIEW_TYPE = 2
@@ -27,8 +34,15 @@ class MoviesPopularListAdapter(private val retry: () -> Unit) : PagedListAdapter
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (getItemViewType(position) == DATA_VIEW_TYPE)
+        if (getItemViewType(position) == DATA_VIEW_TYPE) {
             (holder as MoviesPopularParentAdapter).bind(getItem(position))
+            holder.setItemClickListener(object : ItemMoviePopularClickListener {
+                override fun onItemMovieClick(view: View?, position: Int, isLongClick: Boolean) {
+                    Timber.e("onItemMovieClick ---> $position ---- ${Gson().toJson(getItem(position))}")
+                    view?.context?.startActivity(Intent(view.context, MovieDetailActivity::class.java))
+                }
+            })
+        }
         else (holder as ListFooterViewHolder).bind(state)
     }
 

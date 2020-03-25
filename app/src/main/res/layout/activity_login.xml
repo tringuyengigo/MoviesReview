@@ -5,9 +5,6 @@
     android:background="@color/classic_darkTheme_colorBackground">
 
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -120,14 +117,30 @@
 
                 </RelativeLayout>
 
-                <Button
+
+                <com.facebook.login.widget.LoginButton
                     android:id="@+id/btn_login_fb"
-                    style="@style/SolidButtonStyle"
                     android:layout_width="match_parent"
-                    android:layout_below="@id/divider"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/google_button"
+                    android:layout_marginTop="10dp"
                     android:backgroundTint="@color/fb_blue"
                     android:text="@string/login_fb_btn_label"
+                    android:visibility="gone"
                     android:textSize="16sp" />
+
+                <com.google.android.gms.common.SignInButton
+                    android:id="@+id/google_button"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/divider"
+                    android:layout_marginTop="5dp"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="0dp"
+                    android:text="@string/login_fb_btn_label"
+                    android:fontFamily="@font/sf_pro_display_semibold"
+                    android:textSize="16sp" />
+
 
 
                 <RelativeLayout
@@ -156,8 +169,5 @@
                         android:textSize="16sp" />
                 </RelativeLayout>
             </RelativeLayout>
-
-
-        </RelativeLayout>
 
 </RelativeLayout>

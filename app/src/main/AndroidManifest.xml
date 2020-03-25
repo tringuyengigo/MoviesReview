@@ -13,19 +13,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".presentation.ui.activity.MovieDetailActivity"></activity>
 
-        <activity android:name="gdsvn.tringuyen.moviesreview.presentation.ui.activity.splash.SplashScreen">
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/google_app_id" />
+
+        <activity android:name=".presentation.ui.activity.splash.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name="gdsvn.tringuyen.moviesreview.presentation.ui.activity.login.ForgotPasswordActivity" />
-        <activity android:name="gdsvn.tringuyen.moviesreview.presentation.ui.activity.login.LoginActivity" />
-        <activity android:name="gdsvn.tringuyen.moviesreview.presentation.ui.activity.registration.RegistrationActivity" />
-        <activity android:name="gdsvn.tringuyen.moviesreview.presentation.ui.activity.main.HomeMovieActivity" />
+        <activity android:name=".presentation.ui.activity.login.ForgotPasswordActivity" />
+        <activity android:name=".presentation.ui.activity.login.LoginActivity" />
+        <activity android:name=".presentation.ui.activity.registration.RegistrationActivity" />
+        <activity android:name=".presentation.ui.activity.main.HomeMovieActivity" />
     </application>
 
 </manifest>
