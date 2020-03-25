@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import gdsvn.tringuyen.moviesreview.R
+import kotlinx.android.synthetic.main.activity_forgot_password.*
 
 class ForgotPasswordActivity : AppCompatActivity() {
     private val TAG = "ForgotPasswordActivity"
@@ -29,12 +30,16 @@ class ForgotPasswordActivity : AppCompatActivity() {
     }
 
     private fun initialise() {
-        etEmail = findViewById<View>(R.id.et_email) as EditText
+        etEmail = findViewById<View>(R.id.et_email_address) as EditText
         btnSubmit = findViewById<View>(R.id.btn_submit) as Button
 
         mAuth = FirebaseAuth.getInstance()
 
         btnSubmit!!.setOnClickListener { sendPasswordResetEmail() }
+
+        bt_back.setOnClickListener {
+            startActivity(Intent(this@ForgotPasswordActivity, LoginActivity::class.java))
+        }
     }
 
 
@@ -67,4 +72,6 @@ class ForgotPasswordActivity : AppCompatActivity() {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }
+
+
 }

@@ -23,6 +23,8 @@
     <!--Titles-->
     <string name="login_title">Login</string>
     <string name="signup_title">Sign up</string>
+    <string name="reset">Sign up</string>
+
 
     <!--Welcome messages-->
     <string name="splash_welcome_txt">Easiest way to\nfind the best movies</string>
@@ -33,6 +35,9 @@
     <!--Button labels-->
     <string name="login_btn_label">Login</string>
     <string name="signup_btn_label">Sign up</string>
+    <string name="forgot_password_label">Forgot password</string>
+    <string name="submit_label">Submit</string>
+
 
     <string name="login_label">" Login"</string>
     <string name="signup_label">" Sign up"</string>

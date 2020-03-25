@@ -29,7 +29,10 @@ import com.mikepenz.iconics.context.IconicsLayoutInflater2
 import gdsvn.tringuyen.moviesreview.R
 import gdsvn.tringuyen.moviesreview.presentation.ui.activity.main.HomeMovieActivity
 import gdsvn.tringuyen.moviesreview.presentation.ui.activity.registration.RegistrationActivity
+import gdsvn.tringuyen.moviesreview.presentation.ui.activity.splash.SplashScreen
+import kotlinx.android.synthetic.main.activity_forgot_password.*
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_login.bt_back
 import org.json.JSONException
 import timber.log.Timber
 
@@ -81,8 +84,9 @@ class LoginActivity : AppCompatActivity() {
 
 
     private fun processEvents() {
+
         bt_back.setOnClickListener {
-            finish()
+            startActivity(Intent(this@LoginActivity, SplashScreen::class.java))
         }
 
         sign_up.setOnClickListener { startActivity(Intent(this, RegistrationActivity::class.java)) }
