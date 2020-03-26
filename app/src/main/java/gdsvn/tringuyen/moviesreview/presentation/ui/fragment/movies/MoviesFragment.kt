@@ -1,9 +1,10 @@
 package gdsvn.tringuyen.moviesreview.presentation.ui.fragment.movies
 
 import android.annotation.SuppressLint
-import android.graphics.Typeface
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -17,7 +18,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
 import gdsvn.tringuyen.moviesreview.R
-import gdsvn.tringuyen.moviesreview.data.local.model.Movie
+import gdsvn.tringuyen.moviesreview.data.local.model.movies.Movie
 import gdsvn.tringuyen.moviesreview.data.remote.paging.common.State
 import gdsvn.tringuyen.moviesreview.data.remote.paging.now.MoviesNowListAdapter
 import gdsvn.tringuyen.moviesreview.data.remote.paging.popular.MoviesPopularListAdapter
@@ -34,7 +35,9 @@ import kotlinx.android.synthetic.main.nav_header_main.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
-
+import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
+import gdsvn.tringuyen.moviesreview.presentation.ui.activity.splash.SplashScreen
 
 class MoviesFragment : Fragment() {
 
@@ -47,8 +50,9 @@ class MoviesFragment : Fragment() {
 
     private lateinit var moviesAdapter: MoviesViewPagerAdapter
     private lateinit var drawer: DrawerLayout
+    private lateinit var navView: NavigationView
 
-    private lateinit var tf : Typeface
+
 
     override fun onCreateView (
             inflater: LayoutInflater, container: ViewGroup?,
@@ -73,11 +77,52 @@ class MoviesFragment : Fragment() {
             }
             true
         }
+
+        handleEventsUserDrawer()
+    }
+
+    private fun handleEventsUserDrawer() {
+        // Initialize the action bar drawer toggle instance
+        val drawerToggle:ActionBarDrawerToggle = object : ActionBarDrawerToggle(
+            activity,
+            drawer,
+            toolbar,
+            R.string.drawer_open,
+            R.string.drawer_close
+        ){
+            override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
+                super.onDrawerSlide(drawerView, slideOffset)
+                initUserDrawer()
+            }
+        }
+
+        // Configure the drawer layout to add listener and show icon on toolbar
+        drawerToggle.isDrawerIndicatorEnabled = true
+        drawer.addDrawerListener(drawerToggle)
+        drawerToggle.syncState()
+
+        navView.setNavigationItemSelectedListener{
+            when (it.itemId){
+                R.id.nav_action_log_out -> {
+                    signOut()
+                }
+            }
+            // Close the drawer
+            drawer.closeDrawer(GravityCompat.START)
+            true
+        }
+
+    }
+
+    private fun signOut(){
+        FirebaseAuth.getInstance().signOut()
+        val intent = Intent( this.activity , SplashScreen::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
     }
 
     override fun onStart() {
         super.onStart()
-
         showTitleListMovie(false)
         processToolbar()
         initAdapter()
@@ -88,6 +133,8 @@ class MoviesFragment : Fragment() {
         (activity as? AppCompatActivity)?.supportActionBar?.hide()
         this.activity?.window?.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         drawer = activity!!.findViewById<View>(R.id.drawer_layout) as DrawerLayout
+        navView = activity!!.findViewById<View>(R.id.nav_view) as NavigationView
+
     }
 
     private fun showTitleListMovie(isShow: Boolean) {
@@ -148,7 +195,6 @@ class MoviesFragment : Fragment() {
                 setParallaxTransformation(page, position)
             }
         }
-
     }
 
 
@@ -212,11 +258,52 @@ class MoviesFragment : Fragment() {
                     toolbar.setBackgroundColor(resources.getColor(R.color.colorBackground))
                     this@MoviesFragment.collapsing_toolbar.title = ""
                     this@MoviesFragment.collapsing_toolbar.setExpandedTitleColor(resources.getColor(R.color.color_text_title))
-
                     isShow = false
                 }
             }
         })
+    }
+
+    private fun openDrawer() {
+        drawer.openDrawer(GravityCompat.START)
+        initUserDrawer()
+    }
+
+    private fun initUserDrawer() {
+        context?.let {
+            activity?.nav_header_user_image_view?.let { userImageView ->
+                Glide.with(it)
+                    .load("https://png.pngtree.com/png-clipart/20190924/original/pngtree-business-people-avatar-icon-user-profile-free-vector-png-image_4815126.jpg")
+                    .apply(
+                        RequestOptions
+                            .circleCropTransform()
+                            .error(R.drawable.ic_user))
+                    .into(userImageView)
+            }
+            activity?.nav_header_user_name?.let { userName ->
+                userName.text = "Nguyen Minh Tri"
+            }
+            displayBitmap("0939421821")
+        }
+    }
+
+
+    private fun displayBitmap(value: String) {
+        val widthPixels = resources.getDimensionPixelSize(R.dimen.width_barcode)
+        val heightPixels = resources.getDimensionPixelSize(R.dimen.height_barcode)
+
+        context?.let {
+            activity?.nav_header_barcode?.setImageBitmap(
+                moviesPopularViewModel.processBarcodeUser(
+                    value,
+                    widthPixels,
+                    heightPixels,
+                    resources.getColor(R.color.colorBlack),
+                    resources.getColor(R.color.colorWhite)
+                )
+            )
+            activity?.text_barcode_number?.text  = value
+        }
     }
 
     private fun setParallaxTransformation(page: View, position: Float) {
@@ -235,30 +322,4 @@ class MoviesFragment : Fragment() {
             }
         }
     }
-
-    private fun openDrawer() {
-        drawer.openDrawer(GravityCompat.START)
-        initUserDrawer()
-
-    }
-
-    private fun initUserDrawer() {
-        context?.let {
-            activity?.nav_header_user_image_view?.let { userImageView ->
-                Glide.with(it)
-                    .load("https://png.pngtree.com/png-clipart/20190924/original/pngtree-business-people-avatar-icon-user-profile-free-vector-png-image_4815126.jpg")
-                    .apply(
-                        RequestOptions
-                            .circleCropTransform()
-                            .error(R.drawable.ic_user))
-                    .into(userImageView)
-
-            }
-
-            activity?.nav_header_user_name?.let { userName ->
-                userName.text = "Nguyen Minh Tri"
-            }
-        }
-    }
-
 }

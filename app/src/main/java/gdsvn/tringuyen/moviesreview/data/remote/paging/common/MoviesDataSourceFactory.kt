@@ -2,8 +2,7 @@ package gdsvn.tringuyen.moviesreview.data.remote.paging.common
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
-import gdsvn.tringuyen.moviesreview.data.local.model.Movie
-import gdsvn.tringuyen.moviesreview.data.remote.paging.common.MoviesDataSource
+import gdsvn.tringuyen.moviesreview.data.local.model.movies.Movie
 import gdsvn.tringuyen.moviesreview.domain.usecase.GetMoviesPopularUseCase
 import io.reactivex.disposables.CompositeDisposable
 

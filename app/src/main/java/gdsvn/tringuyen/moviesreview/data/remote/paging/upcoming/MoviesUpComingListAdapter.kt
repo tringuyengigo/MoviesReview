@@ -4,7 +4,7 @@ import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import gdsvn.tringuyen.moviesreview.data.local.model.Movie
+import gdsvn.tringuyen.moviesreview.data.local.model.movies.Movie
 import gdsvn.tringuyen.moviesreview.data.remote.paging.common.ListFooterViewHolder
 import gdsvn.tringuyen.moviesreview.data.remote.paging.common.State
 

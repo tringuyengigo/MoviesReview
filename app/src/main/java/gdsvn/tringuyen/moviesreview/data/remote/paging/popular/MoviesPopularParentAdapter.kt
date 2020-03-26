@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import gdsvn.tringuyen.moviesreview.R
-import gdsvn.tringuyen.moviesreview.data.local.model.Movie
+import gdsvn.tringuyen.moviesreview.data.local.model.movies.Movie
 import gdsvn.tringuyen.moviesreview.presentation.common.define.Define
 import kotlinx.android.synthetic.main.item_movie.view.*
 

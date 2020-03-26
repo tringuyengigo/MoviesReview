@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Movies</string>
+    <string name="app_id">1078772335971</string>
 
     <string name="popular">Popular</string>
     <string name="top_rated">Top Rated</string>
@@ -37,6 +38,8 @@
     <string name="signup_btn_label">Sign up</string>
     <string name="forgot_password_label">Forgot password</string>
     <string name="submit_label">Submit</string>
+    <string name="logout_btn_label">Logout</string>
+    <string name="member_id_card_label">Member ID Card</string>
 
 
     <string name="login_label">" Login"</string>
@@ -61,7 +64,37 @@
     <string name="have_account">Have an account?</string>
     <string name="divider_or">OR</string>
 
-    <string name="app_id">1078772335971</string>
+
+    <string name="drawer_open">Drawer Open</string>
+    <string name="drawer_close">Drawer Closed</string>
+
+
+
+    <string name="action_retry">Retry</string>
+    <string name="action_top_rated">Top rated</string>
+    <string name="action_now_playing">Now playing</string>
+    <string name="action_popular">Popular</string>
+    <string name="action_sort_by">Sort by</string>
+    <string name="movie_backdrop_content_description">Movie backdropPath</string>
+    <string name="movie_poster">Movie poster</string>
+    <string name="label_overview">Overview</string>
+    <string name="release_date">Release date</string>
+    <string name="label_votes">%s votes</string>
+    <string name="action_share">Share trailer</string>
+    <string name="action_favorite">Add to favorites</string>
+    <string name="action_remove_from_favorites">Delete from favorites</string>
+    <string name="movie_added_successfully">Movie added to your favorites successfully</string>
+    <string name="movie_removed_successfully">Movie removed from your favorites successfully</string>
+    <string name="unknown_error">Unknown Error</string>
+    <string name="play_icon">Play icon</string>
+    <string name="trailer_thumbnail">Trailer thumbnail</string>
+    <string name="cast">The Cast</string>
+    <string name="trailers">Trailers</string>
+    <string name="user_reviews">User Reviews</string>
+    <string name="language">Language</string>
+    <string name="bottom_navigation_border">Bottom navigation border</string>
+    <string name="no_favorites">Empty. you haven\'t added any movies to your favorites yet!</string>
+    <string name="review_author_image">Review author image</string>
 
 
 </resources>

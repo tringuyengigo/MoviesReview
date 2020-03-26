@@ -1,4 +1,4 @@
-package gdsvn.tringuyen.moviesreview.data.local.model
+package gdsvn.tringuyen.moviesreview.data.local.model.movies
 
 import java.util.*
 

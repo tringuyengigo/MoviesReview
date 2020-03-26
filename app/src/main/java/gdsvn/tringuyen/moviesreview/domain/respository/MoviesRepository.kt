@@ -1,7 +1,6 @@
 package gdsvn.tringuyen.moviesreview.domain.respository
 
-import gdsvn.tringuyen.moviesreview.data.local.model.Movies
-import io.reactivex.Flowable
+import gdsvn.tringuyen.moviesreview.data.local.model.movies.Movies
 import io.reactivex.Single
 
 interface MoviesRepository {

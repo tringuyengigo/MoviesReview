@@ -3,7 +3,7 @@ package gdsvn.tringuyen.moviesreview.data.remote.paging.common
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import com.google.gson.Gson
-import gdsvn.tringuyen.moviesreview.data.local.model.Movie
+import gdsvn.tringuyen.moviesreview.data.local.model.movies.Movie
 import gdsvn.tringuyen.moviesreview.domain.usecase.GetMoviesPopularUseCase
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers

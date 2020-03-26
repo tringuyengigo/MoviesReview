@@ -3,18 +3,14 @@ package gdsvn.tringuyen.moviesreview.data.remote.paging.popular
 import android.content.Intent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
-import gdsvn.tringuyen.moviesreview.data.local.model.Movie
+import gdsvn.tringuyen.moviesreview.data.local.model.movies.Movie
 import gdsvn.tringuyen.moviesreview.data.remote.paging.common.ListFooterViewHolder
 import gdsvn.tringuyen.moviesreview.data.remote.paging.common.State
-import gdsvn.tringuyen.moviesreview.presentation.ui.activity.MovieDetailActivity
-import gdsvn.tringuyen.moviesreview.presentation.ui.activity.login.ForgotPasswordActivity
-import gdsvn.tringuyen.moviesreview.presentation.ui.activity.registration.RegistrationActivity
+import gdsvn.tringuyen.moviesreview.presentation.ui.activity.moviedetail.MovieDetailActivity
 import timber.log.Timber
 
 

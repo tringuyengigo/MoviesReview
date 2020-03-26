@@ -2,11 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/nav_header"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="wrap_content"
     android:clickable="true"
     android:focusable="true"
     android:background="@color/classic_darkTheme_colorBackground"
-
     android:foreground="?attr/selectableItemBackgroundBorderless"
     android:gravity="bottom"
     android:orientation="vertical"
@@ -23,12 +22,43 @@
     <TextView
         android:id="@+id/nav_header_user_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:paddingTop="16dp"
         android:layout_gravity="center"
         android:textAlignment="center"
         android:text="Name of user"
+        android:textColor="@color/color_text_title"
+        android:textAppearance="@style/EditTextStyle" />
+
+    <TextView
+        android:id="@+id/nav_header_member_card"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="16dp"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:text="@string/member_id_card_label"
+        android:textAppearance="@style/EditTextStyle"
+        android:textColor="@color/orange"
+        android:textSize="15dp"
+         />
+
+    <ImageView
+        android:id="@+id/nav_header_barcode"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_user" />
+
+    <TextView
+        android:id="@+id/text_barcode_number"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:text=""
+        android:textSize="12sp"
         android:textColor="@color/text_light"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/EditTextStyle" />
 
 </LinearLayout>

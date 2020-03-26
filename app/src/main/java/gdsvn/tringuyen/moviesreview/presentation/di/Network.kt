@@ -11,8 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 import java.util.concurrent.TimeUnit
 
-fun createNetworkClient(baseUrl: String) =
-        retrofitClient(baseUrl, httpClient())
+fun createNetworkClient(baseUrl: String) = retrofitClient(baseUrl, httpClient())
 
 class BasicAuthInterceptor() : Interceptor {
 
@@ -46,3 +45,5 @@ private fun retrofitClient(baseUrl: String, httpClient: OkHttpClient): Retrofit 
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
+
+

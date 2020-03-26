@@ -29,4 +29,9 @@
     <dimen name="layout_in_between_margins">16dp</dimen>
     <dimen name="divider_start_and_end_margins">8dp</dimen>
     <dimen name="divider_top_and_bottom_margins">8dp</dimen>
+
+    <dimen name="width_barcode">300dp</dimen>
+    <dimen name="height_barcode">65dp</dimen>
+
+
 </resources>
