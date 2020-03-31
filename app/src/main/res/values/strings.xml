@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Movies</string>
     <string name="app_id">1078772335971</string>
 
@@ -69,7 +69,6 @@
     <string name="drawer_close">Drawer Closed</string>
 
 
-
     <string name="action_retry">Retry</string>
     <string name="action_top_rated">Top rated</string>
     <string name="action_now_playing">Now playing</string>
@@ -95,6 +94,12 @@
     <string name="bottom_navigation_border">Bottom navigation border</string>
     <string name="no_favorites">Empty. you haven\'t added any movies to your favorites yet!</string>
     <string name="review_author_image">Review author image</string>
+
+    <string name="loading_data" tools:ignore="TypographyEllipsis">Loading data...</string>
+    <string name="error_retry" tools:ignore="TypographyEllipsis">ERROR !! Tap to retry.</string>
+    <string name="successfully" tools:ignore="TypographyEllipsis">Successfully load data</string>
+
+    <string name="text_book" tools:ignore="TypographyEllipsis">Book</string>
 
 
 </resources>

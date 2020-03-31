@@ -10,8 +10,10 @@ import com.google.gson.Gson
 import gdsvn.tringuyen.moviesreview.data.local.model.movies.Movie
 import gdsvn.tringuyen.moviesreview.data.remote.paging.common.ListFooterViewHolder
 import gdsvn.tringuyen.moviesreview.data.remote.paging.common.State
+import gdsvn.tringuyen.moviesreview.presentation.common.define.Define
 import gdsvn.tringuyen.moviesreview.presentation.ui.activity.moviedetail.MovieDetailActivity
 import timber.log.Timber
+import java.sql.Time
 
 
 class MoviesPopularListAdapter(private val retry: () -> Unit) : PagedListAdapter<Movie, RecyclerView.ViewHolder>( NewsDiffCallback ) {
@@ -34,8 +36,8 @@ class MoviesPopularListAdapter(private val retry: () -> Unit) : PagedListAdapter
             (holder as MoviesPopularParentAdapter).bind(getItem(position))
             holder.setItemClickListener(object : ItemMoviePopularClickListener {
                 override fun onItemMovieClick(view: View?, position: Int, isLongClick: Boolean) {
-                    Timber.e("onItemMovieClick ---> $position ---- ${Gson().toJson(getItem(position))}")
-                    view?.context?.startActivity(Intent(view.context, MovieDetailActivity::class.java))
+                    Timber.e("onItemMovieClick() ${getItem(position)?.id}")
+                    view?.context?.startActivity(Intent(view.context, MovieDetailActivity::class.java).putExtra(Define.EXTRA_MOVIE_ID, getItem(position)?.id))
                 }
             })
         }

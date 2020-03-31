@@ -157,6 +157,9 @@ dependencies {
     //create barcode
     implementation 'com.google.zxing:core:3.4.0'
 
+    // Circle ImageView
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 
-
+    // TextDrawable
+    implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
 }

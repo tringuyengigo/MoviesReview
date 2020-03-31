@@ -24,7 +24,7 @@ import gdsvn.tringuyen.moviesreview.data.remote.paging.now.MoviesNowListAdapter
 import gdsvn.tringuyen.moviesreview.data.remote.paging.popular.MoviesPopularListAdapter
 import gdsvn.tringuyen.moviesreview.data.remote.paging.top.MoviesTopListAdapter
 import gdsvn.tringuyen.moviesreview.data.remote.paging.upcoming.MoviesUpComingListAdapter
-import gdsvn.tringuyen.moviesreview.presentation.common.adapter.MoviesViewPagerAdapter
+import gdsvn.tringuyen.moviesreview.presentation.ui.fragment.movies.adapter.poster.MoviesViewPagerAdapter
 import gdsvn.tringuyen.moviesreview.presentation.vm.popular.MoviesPopularViewModel
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -173,7 +173,8 @@ class MoviesFragment : Fragment() {
         top_rate_recycler_view.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         top_rate_recycler_view.adapter = mMoviesTopListAdapter
 
-        moviesAdapter = MoviesViewPagerAdapter()
+        moviesAdapter =
+            MoviesViewPagerAdapter()
 
         moviesPopularViewModel.movieList.observe(this, Observer { listMovie ->
             mMoviesUpComingListAdapter.submitList(listMovie)
@@ -249,8 +250,8 @@ class MoviesFragment : Fragment() {
                 }
                 // verify if the toolbar is completely collapsed and set the movie name as the title
                 if (scrollRange + verticalOffset == 0) {
-                    toolbar.setBackgroundColor(resources.getColor(R.color.classic_darkTheme_colorBackground))
                     this@MoviesFragment.collapsing_toolbar.title = this@MoviesFragment.getString(R.string.movies)
+                    toolbar.setBackgroundColor(resources.getColor(R.color.classic_darkTheme_colorBackground))
                     this@MoviesFragment.collapsing_toolbar.setCollapsedTitleTextColor(resources.getColor(R.color.color_text_title))
                     isShow = true
                 } else if (isShow) {

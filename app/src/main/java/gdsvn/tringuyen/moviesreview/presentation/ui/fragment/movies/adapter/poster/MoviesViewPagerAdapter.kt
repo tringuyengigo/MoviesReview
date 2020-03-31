@@ -1,4 +1,4 @@
-package gdsvn.tringuyen.moviesreview.presentation.common.adapter
+package gdsvn.tringuyen.moviesreview.presentation.ui.fragment.movies.adapter.poster
 
 import android.view.LayoutInflater
 import android.view.View
@@ -23,7 +23,11 @@ class MoviesViewPagerAdapter : RecyclerView.Adapter<PagerViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): PagerViewHolder {
         return LayoutInflater.from(parent.context).inflate(
             PagerViewHolder.LAYOUT, parent, false
-        ).let { PagerViewHolder(it) }
+        ).let {
+            PagerViewHolder(
+                it
+            )
+        }
     }
 
     override fun getItemCount() = movies.size

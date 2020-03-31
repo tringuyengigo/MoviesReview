@@ -2,7 +2,8 @@ package gdsvn.tringuyen.moviesreview.data.local.model.moviedetail
 
 import com.google.gson.annotations.SerializedName
 
-data class ResultVideo(
+//Trailers
+data class Trailer(
     @SerializedName("id")
     val id: String,
     @SerializedName("iso_3166_1")

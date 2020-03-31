@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_movie_app_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".presentation.ui.activity.book.BookingTicketActivity"></activity>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -29,8 +30,7 @@
         <activity android:name=".presentation.ui.activity.login.LoginActivity" />
         <activity android:name=".presentation.ui.activity.registration.RegistrationActivity" />
         <activity android:name=".presentation.ui.activity.main.HomeMovieActivity" />
-        <activity android:name=".presentation.ui.activity.moviedetail.MovieDetailActivity"/>
-
+        <activity android:name=".presentation.ui.activity.moviedetail.MovieDetailActivity" />
     </application>
 
 </manifest>
